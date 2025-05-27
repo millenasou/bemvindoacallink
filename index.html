@@ -39,6 +39,10 @@
       height: 100%;
       border: none;
     }
+    /* CSS para ocultar botão de compartilhamento de tela e chat */
+    .screen-share-button, .chat-button {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -55,6 +59,22 @@
       id="video-call">
     </iframe>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let iframe = document.getElementById("video-call");
+      iframe.onload = function() {
+        let btnShare = iframe.contentWindow.document.querySelector(".screen-share-button");
+        let btnChat = iframe.contentWindow.document.querySelector(".chat-button");
+        if (btnShare) {
+          btnShare.style.display = "none";
+        }
+        if (btnChat) {
+          btnChat.style.display = "none";
+        }
+      };
+    });
+  </script>
 
 </body>
 </html>
