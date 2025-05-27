@@ -39,10 +39,6 @@
       height: 100%;
       border: none;
     }
-    /* CSS para ocultar botão de compartilhamento de tela */
-    .screen-share-button {
-      display: none !important;
-    }
   </style>
 </head>
 <body>
@@ -59,18 +55,6 @@
       id="video-call">
     </iframe>
   </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      let iframe = document.getElementById("video-call");
-      iframe.onload = function() {
-        let btnShare = iframe.contentWindow.document.querySelector(".screen-share-button");
-        if (btnShare) {
-          btnShare.style.display = "none";
-        }
-      };
-    });
-  </script>
 
 </body>
 </html>
