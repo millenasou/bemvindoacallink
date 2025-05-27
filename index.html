@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,8 +7,8 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
       background-color: #fff;
+      font-family: Arial, sans-serif;
     }
     header {
       background-color: #ffffff;
@@ -25,16 +24,24 @@
     .botao-form {
       background-color: #004b8d;
       color: white;
-      padding: 10px 20px;
+      padding: 8px 16px;
       text-decoration: none;
       border-radius: 4px;
       font-size: 14px;
-      font-weight: bold;
     }
-    iframe {
+    .iframe-wrapper {
+      position: relative;
       width: 100vw;
       height: calc(100vh - 60px);
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
       border: none;
+    }
+    /* CSS para ocultar botão de compartilhamento de tela */
+    .screen-share-button {
+      display: none !important;
     }
   </style>
 </head>
@@ -45,10 +52,25 @@
     <a class="botao-form" href="https://forms.office.com/pages/responsepage.aspx?id=wXNMk-mIUEStecaIZ0VvmwYsJOHlnJJIpVZfxvJLMh9UQ05VM0RHSDZGUzNQQUQ4U1gzN1U4UDJQQS4u&route=shorturl" target="_blank">Abrir Formulário</a>
   </header>
 
-  <iframe
-    allow="camera; microphone; fullscreen; speaker"
-    src="https://callink-rh-entrevista.whereby.com/bemvindocallinkcdbe7c3f-6f12-4025-aaf3-be3c6fe2b2c3?embed&chat=off">
-  </iframe>
+  <div class="iframe-wrapper">
+    <iframe
+      allow="camera; microphone; fullscreen; speaker"
+      src="https://callink-rh-entrevista.whereby.com/bemvindocallinkcdbe7c3f-6f12-4025-aaf3-be3c6fe2b2c3?embed&chat=off"
+      id="video-call">
+    </iframe>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let iframe = document.getElementById("video-call");
+      iframe.onload = function() {
+        let btnShare = iframe.contentWindow.document.querySelector(".screen-share-button");
+        if (btnShare) {
+          btnShare.style.display = "none";
+        }
+      };
+    });
+  </script>
 
 </body>
 </html>
